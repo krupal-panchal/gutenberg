@@ -312,7 +312,7 @@ const ShadowPopover = ( { shadow, onShadowChange, settings } ) => {
 	return (
 		<Dropdown
 			popoverProps={ popoverProps }
-			className="block-editor-global-styles-effects-panel__shadow-dropdown"
+			className="block-editor-global-styles__shadow-dropdown"
 			renderToggle={ renderShadowToggle() }
 			renderContent={ () => (
 				<DropdownContentWrapper paddingSize="medium">
@@ -339,7 +339,7 @@ function renderShadowToggle() {
 			<Button { ...toggleProps }>
 				<HStack justify="flex-start">
 					<Icon
-						className="block-editor-global-styles-effects-panel__toggle-icon"
+						className="block-editor-global-styles__toggle-icon"
 						icon={ shadowIcon }
 						size={ 24 }
 					/>
@@ -361,7 +361,7 @@ function ShadowPopoverContainer( { shadow, onShadowChange, settings } ) {
 	];
 
 	return (
-		<div className="block-editor-global-styles-effects-panel__shadow-popover-container">
+		<div className="block-editor-global-styles__shadow-popover-container">
 			<VStack spacing={ 4 }>
 				<Heading level={ 5 }>{ __( 'Presets' ) }</Heading>
 				<ShadowPresets
@@ -394,9 +394,9 @@ function ShadowPresets( { presets, activeShadow, onSelect } ) {
 
 function ShadowIndicator( { label, isActive, onSelect, shadow } ) {
 	return (
-		<div className="block-editor-global-styles-effects-panel__shadow-indicator-wrapper">
+		<div className="block-editor-global-styles__shadow-indicator-wrapper">
 			<Button
-				className="block-editor-global-styles-effects-panel__shadow-indicator"
+				className="block-editor-global-styles__shadow-indicator"
 				onClick={ onSelect }
 				label={ label }
 				style={ { boxShadow: shadow } }
