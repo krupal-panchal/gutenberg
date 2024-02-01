@@ -83,6 +83,7 @@ function URLPopover( {
 							label={ __( 'Link settings' ) }
 							onClick={ toggleSettingsVisibility }
 							aria-expanded={ isSettingsExpanded }
+							size="compact"
 						/>
 					) }
 				</div>
