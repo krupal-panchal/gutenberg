@@ -481,6 +481,7 @@ export default function Image( {
 						onSelect={ onSelectImage }
 						onSelectURL={ onSelectURL }
 						onError={ onUploadError }
+						title={ image?.title?.rendered }
 					/>
 				</BlockControls>
 			) }

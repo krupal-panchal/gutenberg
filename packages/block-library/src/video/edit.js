@@ -32,6 +32,7 @@ import { useInstanceId } from '@wordpress/compose';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { video as icon } from '@wordpress/icons';
 import { store as noticesStore } from '@wordpress/notices';
+import { store as coreStore } from '@wordpress/core-data';
 
 /**
  * Internal dependencies
@@ -76,6 +77,14 @@ function VideoEdit( {
 	const { id, controls, poster, src, tracks } = attributes;
 	const isTemporaryVideo = ! id && isBlobURL( src );
 	const { getSettings } = useSelect( blockEditorStore );
+
+	const videoFile = useSelect(
+		( select ) =>
+			id && isSingleSelected
+				? select( coreStore ).getMedia( id, { context: 'view' } )
+				: null,
+		[ id, isSingleSelected ]
+	);
 
 	useEffect( () => {
 		if ( ! id && isBlobURL( src ) ) {
@@ -201,6 +210,7 @@ function VideoEdit( {
 							onSelect={ onSelectVideo }
 							onSelectURL={ onSelectURL }
 							onError={ onUploadError }
+							title={ videoFile?.title?.rendered }
 						/>
 					</BlockControls>
 				</>

@@ -59,6 +59,7 @@ const MediaReplaceFlow = ( {
 	addToGallery,
 	handleUpload = true,
 	popoverProps,
+	title,
 } ) => {
 	const mediaUpload = useSelect( ( select ) => {
 		return select( blockEditorStore ).getSettings().mediaUpload;
@@ -220,7 +221,7 @@ const MediaReplaceFlow = ( {
 							</span>
 
 							<LinkControl
-								value={ { url: mediaURL } }
+								value={ { title, url: mediaURL } }
 								settings={ [] }
 								showSuggestions={ false }
 								onChange={ ( { url } ) => {

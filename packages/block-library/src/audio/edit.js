@@ -28,6 +28,7 @@ import { __, _x } from '@wordpress/i18n';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { audio as icon } from '@wordpress/icons';
 import { store as noticesStore } from '@wordpress/notices';
+import { store as coreStore } from '@wordpress/core-data';
 
 /**
  * Internal dependencies
@@ -48,6 +49,14 @@ function AudioEdit( {
 	const { id, autoplay, loop, preload, src } = attributes;
 	const isTemporaryAudio = ! id && isBlobURL( src );
 	const { getSettings } = useSelect( blockEditorStore );
+
+	const audioFile = useSelect(
+		( select ) =>
+			id && isSingleSelected
+				? select( coreStore ).getMedia( id, { context: 'view' } )
+				: null,
+		[ id, isSingleSelected ]
+	);
 
 	useEffect( () => {
 		if ( ! id && isBlobURL( src ) ) {
@@ -153,6 +162,7 @@ function AudioEdit( {
 						onSelect={ onSelectAudio }
 						onSelectURL={ onSelectURL }
 						onError={ onUploadError }
+						title={ audioFile?.title?.rendered }
 					/>
 				</BlockControls>
 			) }
