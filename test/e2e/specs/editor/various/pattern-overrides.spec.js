@@ -309,8 +309,10 @@ test.describe( 'Pattern Overrides', () => {
 				name: 'core/block',
 				attributes: {
 					ref: outerPattern.id,
-					overrides: {
-						[ headingId ]: { content: 'Outer heading (edited)' },
+					content: {
+						[ headingId ]: {
+							values: { content: 'Outer heading (edited)' },
+						},
 					},
 				},
 				innerBlocks: [
@@ -322,9 +324,11 @@ test.describe( 'Pattern Overrides', () => {
 						name: 'core/block',
 						attributes: {
 							ref: innerPattern.id,
-							overrides: {
+							content: {
 								[ paragraphId ]: {
-									content: 'Inner paragraph (edited)',
+									values: {
+										content: 'Inner paragraph (edited)',
+									},
 								},
 							},
 						},
